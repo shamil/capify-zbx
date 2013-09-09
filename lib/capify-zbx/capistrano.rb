@@ -72,7 +72,7 @@ Capistrano::Configuration.instance(:must_exist).load do
     end
 
     define_role_roles(role, hosts) # generates role for group of hosts
-    define_host_roles(role, hosts) # generates role for each host (role per host)
+    #define_host_roles(role, hosts) # generates role for each host (role per host)
   end
 
   def define_role_roles(role, hosts)
