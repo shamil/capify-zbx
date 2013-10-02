@@ -17,7 +17,7 @@ Capistrano::Configuration.instance(:must_exist).load do
 
       hosts.each_with_index do |host, i|
         puts sprintf "%-12s:  %-32s id=%-20s role='%s'",
-          i.to_s.white, host['name'], host['hostid'].red, host['capistrano_role'].yellow
+          i.to_s.white, host['host'], host['hostid'].red, host['capistrano_role'].yellow
       end
     end
 
@@ -47,7 +47,7 @@ Capistrano::Configuration.instance(:must_exist).load do
       host = hosts[server.to_i]
       port = ssh_options[:port] || 22
       login = fetch(:user)
-      command = "ssh -p #{port} -l #{login} #{host['name']}"
+      command = "ssh -p #{port} -l #{login} #{host['host']}"
       puts "Running `#{command}`"
       exec(command)
     end
