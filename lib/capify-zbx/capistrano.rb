@@ -86,7 +86,7 @@ Capistrano::Configuration.instance(:must_exist).load do
 
   def define_host_roles(role, hosts)
     hosts.each do |host|
-      task host['name'].to_sym do
+      task host['host'].to_sym do
         remove_default_roles
         define_role(role, host)
       end
@@ -97,12 +97,12 @@ Capistrano::Configuration.instance(:must_exist).load do
   def define_role(role, host)
     options = role[:options]
     new_options = {}
-    options.each {|key, value| new_options[key] = true if value.to_s == host['name']}
+    options.each {|key, value| new_options[key] = true if value.to_s == host['host']}
 
     if new_options
-      role(role[:name].to_sym, new_options) { host['name'] }
+      role(role[:name].to_sym, new_options) { host['host'] }
     else
-      role(role[:name].to_sym) { host['name'] }
+      role(role[:name].to_sym) { host['host'] }
     end
   end
 
@@ -110,12 +110,12 @@ Capistrano::Configuration.instance(:must_exist).load do
   def define_role_static(role, host)
     options = role[:options]
     new_options = {}
-    options.each {|key, value| new_options[key] = true if value.to_s == host['name']}
+    options.each {|key, value| new_options[key] = true if value.to_s == host['host']}
 
     if new_options
-      role role[:name].to_sym, host['name'], new_options
+      role role[:name].to_sym, host['host'], new_options
     else
-      role role[:name].to_sym, host['name']
+      role role[:name].to_sym, host['host']
     end
   end
 
