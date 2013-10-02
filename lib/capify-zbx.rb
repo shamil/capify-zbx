@@ -45,6 +45,6 @@ class CapifyZbx
     end
 
     def self.get_host_by_name(name)
-        available_hosts.select { |h| h['name'].to_s == name }
+        available_hosts.select { |h| h['host'].to_s == name }
     end
 end # of CapifyZbx class
